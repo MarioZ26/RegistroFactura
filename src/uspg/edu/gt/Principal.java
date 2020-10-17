@@ -105,17 +105,17 @@ public class Principal {
                     System.out.println("Datos de las facturas ingresadas");
                     System.out.println("--------------------------------");
 
-                    System.out.println("Serie\t" + "No factura\t" + "Fecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
+                    System.out.println("Serie\t" + "NoFactu\t" + "Fecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
 
                     for (FacturaEncabezado facturaEncabezado : datosFac) {
 
                         System.out.println(facturaEncabezado.getSerie() + "\t" + facturaEncabezado.getNumero() + "\t" 
                                 + facturaEncabezado.getFecha() + "\t" + facturaEncabezado.getNombre() + "\t" + 
-                                facturaEncabezado.getDireccion() + "\t" + facturaEncabezado.getNit());
+                                facturaEncabezado.getDireccion() + "\t" + facturaEncabezado.getNit());}
                         
                         for (FacturaDetalle facturaDetalle : detalle) {
                              System.out.println("Cantidad\t" + "Descripción\t" + "Valor\t" + "Total");
-                            System.out.println(facturaDetalle.getCantidad() + "\t" + facturaDetalle.getDescripcion()
+                            System.out.println(facturaDetalle.getCantidad() + "\t"+"\t" + facturaDetalle.getDescripcion()+"\t"
                             + "\t" + facturaDetalle.getValor() + "\t" + facturaDetalle.getTotal());
                             
                         }
@@ -124,7 +124,7 @@ public class Principal {
 
                     }
 
-            }
+            
 
         } while (opcion != 3);
         System.out.println("Gracias");
