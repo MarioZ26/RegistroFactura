@@ -64,7 +64,7 @@ public class Principal {
                         System.out.print("Nombre: ");
                         nombre = input.next();
                         System.out.print("Direccion: ");
-                        direccion = input.nextLine();
+                        direccion = input.next();
                         System.out.print("Ingresar Nit: ");
                         nit = input.nextInt();
 
