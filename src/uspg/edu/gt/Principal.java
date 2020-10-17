@@ -18,6 +18,7 @@ public class Principal {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
+        
 
         List<FacturaEncabezado> datosFac = new ArrayList();
 
