@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Nombre       Carnet
+Otto Ramirez 2000136
  */
 package uspg.edu.gt;
 
