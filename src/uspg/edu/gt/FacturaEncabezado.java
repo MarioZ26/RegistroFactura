@@ -55,7 +55,7 @@ public class FacturaEncabezado {
             facturaDetaL.add(new FacturaDetalle());
             facturaDetaL.get(contador).facturaD();
 
-            detalle.facturaD();
+           // detalle.facturaD();
 
             System.out.print("--Desea agregar más datos s/n: ");
             ingresar = sc.next().charAt(0);
@@ -70,7 +70,7 @@ public class FacturaEncabezado {
         for (int i = 0; i < contador; i++) {
 
             System.out.println("Serie\t" + "NoFactu\t" + "\tFecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
-            System.out.println(serie.get(i) + "   \t" + numero.get(i) + "\t" + fecha.get(i) + "\t" + nombre.get(i)
+            System.out.println(serie.get(i) + "   \t" + numero.get(i) + "\t\t" + fecha.get(i) + "\t" + nombre.get(i)
                     + "\t" + direccion.get(i) + "\t\t" + nit.get(i));
 
             facturaDetaL.get(i).mostrarD();
