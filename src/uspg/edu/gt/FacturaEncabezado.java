@@ -5,80 +5,81 @@
  */
 package uspg.edu.gt;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  *
  * @author marioz
  */
 public class FacturaEncabezado {
 
-    int serie;
-    int numero;
-    String fecha;
-    String nombre;
-    String direccion;
-    int nit;
+    public static int contador = 0;
 
-    public FacturaEncabezado(int serie, int numero, String fecha, String nombre, String direccion, int nit) {
-        this.serie = serie;
-        this.numero = numero;
-        this.fecha = fecha;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.nit = nit;
-    }
+    List<String> nombre = new ArrayList();
+    List<String> direccion = new ArrayList();
 
+    List<Integer> fecha = new ArrayList();
+    List<Integer> serie = new ArrayList();
+    List<Integer> numero = new ArrayList();
+    List<Integer> nit = new ArrayList();
+
+    List<FacturaDetalle> facturaDetaL = new ArrayList();
     
+    FacturaDetalle datosF = new FacturaDetalle();
 
-    public int getSerie() {
-        return serie;
+    public void facturaE() {
+        
+        FacturaDetalle detalle = new FacturaDetalle();
+
+        Scanner sc = new Scanner(System.in);
+
+        
+
+        char ingresar = 'n';
+
+        do {
+
+            System.out.print("Serie: ");
+            serie.add(sc.nextInt());
+            System.out.print("Numero de la factura: ");
+            numero.add(sc.nextInt());
+            System.out.print("Fecha: ");
+            fecha.add(sc.nextInt());
+            System.out.print("Nombre: ");
+            nombre.add(sc.next());
+            System.out.print("Direccion: ");
+            direccion.add(sc.next());
+            System.out.print("Ingresar Nit: ");
+            nit.add(sc.nextInt());
+
+            facturaDetaL.add(new FacturaDetalle());
+            facturaDetaL.get(contador).facturaD();
+            
+            detalle.facturaD();
+
+            System.out.print("--Desea agregar más datos s/n: ");
+            ingresar = sc.next().charAt(0);
+            System.out.println("\n");
+
+            contador++;
+        } while (ingresar == 's');
+
     }
 
-    public void setSerie(int serie) {
-        this.serie = serie;
-    }
+    public void mostrarE() {
+        for (int i = 0; i < contador; i++) {
 
-    public int getNumero() {
-        return numero;
-    }
+            System.out.println("Serie\t" + "NoFactu\t" + "Fecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
+            System.out.println(serie.get(i) + "\t" + numero.get(i) + "\t" + fecha.get(i) + "\t" + nombre.get(i)
+                    + "\t" + direccion.get(i) + "\t" + nit.get(i));
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+            facturaDetaL.get(i).mostrarD();
 
-    public String getFecha() {
-        return fecha;
-    }
+            System.out.println("\n\n+++++++++++++++++++++++++++++\n\n");
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+        }
 
-    public String getDireccion() {
-        return direccion;
     }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public int getNit() {
-        return nit;
-    }
-
-    public void setNit(int nit) {
-        this.nit = nit;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    
-    
-    
 }
-

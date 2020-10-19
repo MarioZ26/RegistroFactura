@@ -5,39 +5,27 @@
  */
 package uspg.edu.gt;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Otto
  */
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Principal {
 
-    public static Scanner input = new Scanner(System.in);
-
-    public static int serie;
-    public static int numero;
-    public static String fecha;
-    public static String nombre;
-    public static String direccion;
-    public static int nit;
-
-    public static int cantidad;
-    public static String descripcion;
-    public static double valor;
-    public static double total;
-
-    public static char ingresar = 'n';
-    public static int opcion = 0;
-    public static char factura = 'n';
-
-    public static List<FacturaEncabezado> datosFac = new ArrayList();
-    public static List<FacturaDetalle> detalle = new ArrayList();
-
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
 
+        FacturaEncabezado FacEn = new FacturaEncabezado();
+        FacturaDetalle FacDe = new FacturaDetalle();
+        
+        
+        int opcion;
+        
+        
         do {
             System.out.println("Bienvenido al registro de facturas");
             System.out.println("Seleccione la opcion que necesita");
@@ -54,14 +42,16 @@ public class Principal {
                     System.out.println("------------------------------------");
                     System.out.println("Ingrese los siguientes datos para registro");
                     System.out.println("------------------------------------");
+                    
+                    FacEn.facturaE();
 
-                    datosPersona();
+                   // datosPersona();
 
                     break;
 
                 case 2:
 
-                    Mostrar();
+                 //   Mostrar();
 
                     break;
 
@@ -79,59 +69,7 @@ public class Principal {
 
     }
 
-    public static void datosPersona() {
-
-        do {
-
-            System.out.print("Serie: ");
-            serie = input.nextInt();
-            System.out.print("Numero de la factura: ");
-            numero = input.nextInt();
-            System.out.print("Fecha: ");
-            fecha = input.next();
-            System.out.print("Nombre: ");
-            nombre = input.next();
-            System.out.print("Direccion: ");
-            direccion = input.next();
-            System.out.print("Ingresar Nit: ");
-            nit = input.nextInt();
-
-            datosProductos();
-
-            datosFac.add(new FacturaEncabezado(serie, numero, fecha, nombre, direccion, nit));
-            System.out.print("--Desea agregar más datos s/n: ");
-            ingresar = input.next().charAt(0);
-
-            System.out.println("\n");
-
-        } while (ingresar == 's');
-    }
-
-    public static void datosProductos() {
-        do {
-            System.out.println("\t--*Cantidad de productos*--");
-            System.out.print("-");
-            cantidad = input.nextInt();
-
-            System.out.println("\t---Descripción--- ");
-            System.out.println("-");
-            descripcion = input.next();
-
-            System.out.println("\t---Valor del producto---");
-            System.out.print("Q");
-            valor = input.nextDouble();
-
-            total = cantidad * valor;
-
-            System.out.print("--Desea agregar más datos a la factura s/n: ");
-            factura = input.next().charAt(0);
-            System.out.println("\n");
-
-            detalle.add(new FacturaDetalle(cantidad, descripcion, valor, total));
-
-        } while (factura == 's');
-    }
-
+    /*
     public static void Mostrar() {
 
         System.out.println("--------------------------------");
@@ -155,5 +93,5 @@ public class Principal {
         }
 
     }
-
+*/
 }

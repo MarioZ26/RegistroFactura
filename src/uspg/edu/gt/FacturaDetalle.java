@@ -5,54 +5,63 @@
  */
 package uspg.edu.gt;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  *
  * @author marioz
  */
 public class FacturaDetalle {
-    int cantidad;
-    String descripcion;
-    double valor;
-    double total;
 
-    public FacturaDetalle(int cantidad, String descripcion, double valor, double total) {
-        this.cantidad = cantidad;
-        this.descripcion = descripcion;
-        this.valor = valor;
-        this.total = total;
+    List<String> descripcion = new ArrayList();
+    List<Integer> cantidad = new ArrayList();
+    List<Integer> valor = new ArrayList();
+    List<Integer> total = new ArrayList();
+    int contador = 0;
+
+    public void facturaD() {
+
+        Scanner sc = new Scanner(System.in);
+        char factura = 'n';
+
+        do {
+            System.out.println("\t--*Cantidad de productos*--");
+            System.out.print("-");
+            cantidad.add(sc.nextInt());
+
+            System.out.println("\t---Descripción--- ");
+            System.out.println("-");
+            descripcion.add(sc.next());
+
+            System.out.println("\t---Valor del producto---");
+            System.out.print("Q");
+            valor.add(sc.nextInt());
+
+          //  total.add(cantidad * valor);
+          //  total = cantidad * valor;
+            System.out.print("--Desea agregar más datos a la factura s/n: ");
+            factura = sc.next().charAt(0);
+            System.out.println("\n");
+
+            contador++;
+
+        } while (factura == 's');
+
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public void mostrarD() {
+        for (int i = 0; i < contador; i++) {
+            System.out.println("Cantidad\t" + "Descripción\t" + "Valor\t" + "Total");
+            System.out.println(i + 1);
+            System.out.println(cantidad.get(i) + "\t" + descripcion.get(i) + "\t" + valor.get(i));
+        }
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public FacturaDetalle() {
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+   
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-    
-    
 }
