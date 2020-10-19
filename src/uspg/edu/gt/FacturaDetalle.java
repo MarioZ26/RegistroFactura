@@ -32,20 +32,20 @@ public class FacturaDetalle {
             cantidad.add(sc.nextInt());
 
             System.out.println("\t---Descripción--- ");
-            System.out.println("-");
+            System.out.print("-");
             descripcion.add(sc.next());
 
             System.out.println("\t---Valor del producto---");
             System.out.print("Q");
             valor.add(sc.nextInt());
 
-          //  total.add(cantidad * valor);
-          //  total = cantidad * valor;
+            total.add(cantidad.get(contador) * valor.get(contador));
+
+            contador++;
+
             System.out.print("--Desea agregar más datos a la factura s/n: ");
             factura = sc.next().charAt(0);
             System.out.println("\n");
-
-            contador++;
 
         } while (factura == 's');
 
@@ -54,14 +54,11 @@ public class FacturaDetalle {
     public void mostrarD() {
         for (int i = 0; i < contador; i++) {
             System.out.println("Cantidad\t" + "Descripción\t" + "Valor\t" + "Total");
-            System.out.println(i + 1);
-            System.out.println(cantidad.get(i) + "\t" + descripcion.get(i) + "\t" + valor.get(i));
+            System.out.println("   " + cantidad.get(i) + "\t\t" + descripcion.get(i) + "\t\t" + valor.get(i) + "\t" + total.get(i));
         }
     }
 
     public FacturaDetalle() {
     }
-
-   
 
 }

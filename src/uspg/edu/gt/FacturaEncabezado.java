@@ -26,16 +26,14 @@ public class FacturaEncabezado {
     List<Integer> nit = new ArrayList();
 
     List<FacturaDetalle> facturaDetaL = new ArrayList();
-    
+
     FacturaDetalle datosF = new FacturaDetalle();
 
     public void facturaE() {
-        
+
         FacturaDetalle detalle = new FacturaDetalle();
 
         Scanner sc = new Scanner(System.in);
-
-        
 
         char ingresar = 'n';
 
@@ -56,7 +54,7 @@ public class FacturaEncabezado {
 
             facturaDetaL.add(new FacturaDetalle());
             facturaDetaL.get(contador).facturaD();
-            
+
             detalle.facturaD();
 
             System.out.print("--Desea agregar más datos s/n: ");
@@ -71,9 +69,9 @@ public class FacturaEncabezado {
     public void mostrarE() {
         for (int i = 0; i < contador; i++) {
 
-            System.out.println("Serie\t" + "NoFactu\t" + "Fecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
-            System.out.println(serie.get(i) + "\t" + numero.get(i) + "\t" + fecha.get(i) + "\t" + nombre.get(i)
-                    + "\t" + direccion.get(i) + "\t" + nit.get(i));
+            System.out.println("Serie\t" + "NoFactu\t" + "\tFecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
+            System.out.println(serie.get(i) + "   \t" + numero.get(i) + "\t" + fecha.get(i) + "\t" + nombre.get(i)
+                    + "\t" + direccion.get(i) + "\t\t" + nit.get(i));
 
             facturaDetaL.get(i).mostrarD();
 
