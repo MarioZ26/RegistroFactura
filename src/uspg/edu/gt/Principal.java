@@ -1,7 +1,7 @@
 /*
-Nombre       Carnet
-Otto Ramirez 2000136
-Mario Zavala 2000123
+ Nombre       Carnet
+ Otto Ramirez 2000136
+ Mario Zavala 2000123
  */
 package uspg.edu.gt;
 
@@ -15,28 +15,28 @@ import java.util.Scanner;
 
 public class Principal {
 
+    public static Scanner input = new Scanner(System.in);
+
+    public static int serie;
+    public static int numero;
+    public static String fecha;
+    public static String nombre;
+    public static String direccion;
+    public static int nit;
+
+    public static int cantidad;
+    public static String descripcion;
+    public static double valor;
+    public static double total;
+
+    public static char ingresar = 'n';
+    public static int opcion = 0;
+    public static char factura = 'n';
+
+    public static List<FacturaEncabezado> datosFac = new ArrayList();
+    public static List<FacturaDetalle> detalle = new ArrayList();
+
     public static void main(String[] args) {
-
-        Scanner input = new Scanner(System.in);
-
-        List<FacturaEncabezado> datosFac = new ArrayList();
-        List<FacturaDetalle> detalle = new ArrayList();
-
-        int serie;
-        int numero;
-        String fecha;
-        String nombre;
-        String direccion;
-        int nit;
-
-        int cantidad;
-        String descripcion;
-        double valor;
-        double total;
-
-        char ingresar = 'n';
-        int opcion = 0;
-        char factura = 'n';
 
         do {
             System.out.println("Bienvenido al registro de facturas");
@@ -54,77 +54,105 @@ public class Principal {
                     System.out.println("------------------------------------");
                     System.out.println("Ingrese los siguientes datos para registro");
                     System.out.println("------------------------------------");
-                    do {
-                        System.out.print("Serie: ");
-                        serie = input.nextInt();
-                        System.out.print("Numero de la factura: ");
-                        numero = input.nextInt();
-                        System.out.print("Fecha: ");
-                        fecha = input.next();
-                        System.out.print("Nombre: ");
-                        nombre = input.next();
-                        System.out.print("Direccion: ");
-                        direccion = input.next();
-                        System.out.print("Ingresar Nit: ");
-                        nit = input.nextInt();
 
-                        datosFac.add(new FacturaEncabezado(serie, numero, fecha, nombre, direccion, nit));
-
-                        do {
-                            System.out.println("\t--*Cantidad de productos*--");
-                            System.out.print("-");
-                            cantidad = input.nextInt();
-
-                            System.out.print("\t---Descripción--- ");
-                             System.out.println("-");
-                            descripcion = input.next();
-
-                            System.out.print("\t---Valor del producto---");
-                            System.out.print("Q");
-                            valor = input.nextDouble();
-
-                            total = cantidad * valor;
-
-                            System.out.print("--Desea agregar más datos a la factura s/n: ");
-                            factura = input.next().charAt(0);
-                            System.out.println("\n");
-
-                            detalle.add(new FacturaDetalle(cantidad, descripcion, valor, total));
-
-                        } while (factura == 's');
-
-                        System.out.print("--Desea agregar más datos s/n: ");
-                        ingresar = input.next().charAt(0);
-                        System.out.println("\n");
-
-                    } while (ingresar == 's');
+                    datosPersona();
 
                     break;
+
                 case 2:
-                    System.out.println("--------------------------------");
-                    System.out.println("Datos de las facturas ingresadas");
-                    System.out.println("--------------------------------");
 
-                    for (FacturaEncabezado facturaEncabezado : datosFac) {
-                        System.out.println("Serie\t" + "NoFactu\t" + "Fecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
-                        System.out.println(facturaEncabezado.getSerie() + "\t" + facturaEncabezado.getNumero() + "\t"
-                                + facturaEncabezado.getFecha() + "\t" + facturaEncabezado.getNombre() + "\t"
-                                + facturaEncabezado.getDireccion() + "\t" + facturaEncabezado.getNit());
+                    Mostrar();
 
-                        for (FacturaDetalle facturaDetalle : detalle) {
-                            System.out.println("Cantidad\t" + "Descripción\t" + "Valor\t" + "Total");
-                            System.out.println(facturaDetalle.getCantidad() + "\t" + "\t" + facturaDetalle.getDescripcion() + "\t"
-                                    + "\t" + facturaDetalle.getValor() + "\t" + facturaDetalle.getTotal());
+                    break;
 
-                        }
-                        System.out.println("----------------------------------------------------------");
-                    }
+                default:
+                    System.out.println("----------------------------------------");
+                    System.out.println("Por favor ingrese un número valido");
+                    System.out.println("----------------------------------------");
+                    break;
 
             }
 
         } while (opcion != 3);
         System.out.println("Gracias");
         System.out.println("Regrese pronto");
+
+    }
+
+    public static void datosPersona() {
+
+        do {
+
+            System.out.print("Serie: ");
+            serie = input.nextInt();
+            System.out.print("Numero de la factura: ");
+            numero = input.nextInt();
+            System.out.print("Fecha: ");
+            fecha = input.next();
+            System.out.print("Nombre: ");
+            nombre = input.next();
+            System.out.print("Direccion: ");
+            direccion = input.next();
+            System.out.print("Ingresar Nit: ");
+            nit = input.nextInt();
+
+            datosProductos();
+
+            datosFac.add(new FacturaEncabezado(serie, numero, fecha, nombre, direccion, nit));
+            System.out.print("--Desea agregar más datos s/n: ");
+            ingresar = input.next().charAt(0);
+
+            System.out.println("\n");
+
+        } while (ingresar == 's');
+    }
+
+    public static void datosProductos() {
+        do {
+            System.out.println("\t--*Cantidad de productos*--");
+            System.out.print("-");
+            cantidad = input.nextInt();
+
+            System.out.print("\t---Descripción--- ");
+            System.out.println("-");
+            descripcion = input.next();
+
+            System.out.print("\t---Valor del producto---");
+            System.out.println("Q");
+            valor = input.nextDouble();
+
+            total = cantidad * valor;
+
+            System.out.print("--Desea agregar más datos a la factura s/n: ");
+            factura = input.next().charAt(0);
+            System.out.println("\n");
+
+            detalle.add(new FacturaDetalle(cantidad, descripcion, valor, total));
+
+        } while (factura == 's');
+    }
+
+    public static void Mostrar() {
+
+        System.out.println("--------------------------------");
+        System.out.println("Datos de las facturas ingresadas");
+        System.out.println("--------------------------------");
+
+        for (FacturaEncabezado facturaEncabezado : datosFac) {
+            System.out.println("Serie\t" + "NoFactu\t" + "Fecha\t" + "Nombre\t" + "Direccion\t" + "Nit\t");
+            System.out.println(facturaEncabezado.getSerie() + "\t" + facturaEncabezado.getNumero() + "\t"
+                    + facturaEncabezado.getFecha() + "\t" + facturaEncabezado.getNombre() + "\t"
+                    + facturaEncabezado.getDireccion() + "\t" + facturaEncabezado.getNit());
+
+            for (FacturaDetalle facturaDetalle : detalle) {
+                System.out.println("Cantidad\t" + "Descripción\t" + "Valor\t" + "Total");
+                System.out.println(facturaDetalle.getCantidad() + "\t" + "\t" + facturaDetalle.getDescripcion() + "\t"
+                        + "\t" + facturaDetalle.getValor() + "\t" + facturaDetalle.getTotal());
+
+            }
+
+            System.out.println("----------------------------------------------------------");
+        }
 
     }
 
