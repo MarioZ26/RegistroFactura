@@ -113,12 +113,12 @@ public class Principal {
             System.out.print("-");
             cantidad = input.nextInt();
 
-            System.out.print("\t---Descripción--- ");
+            System.out.println("\t---Descripción--- ");
             System.out.println("-");
             descripcion = input.next();
 
-            System.out.print("\t---Valor del producto---");
-            System.out.println("Q");
+            System.out.println("\t---Valor del producto---");
+            System.out.print("Q");
             valor = input.nextDouble();
 
             total = cantidad * valor;
